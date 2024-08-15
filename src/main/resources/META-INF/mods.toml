@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[51,53)"
+license="All rights reserved"
+[[mods]]
+modId="totemaccessory"
+version="${file.jarVersion}"
+displayName="Ohmega"
+logoFile= "totemaccessory.png"
+authors="Developer: Swacky_"
+description='''Allows Totems of Undying to be equipped as an accessory (Ohmega API)'''
+[[dependencies.totemaccessory]]
+modId="forge"
+mandatory=true
+versionRange="[51,53)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.totemaccessory]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.21,1.21.2)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.totemaccessory]]
+modId="ohmega"
+mandatory=true
+#versionRange="[)"
+ordering="BEFORE"
+side="BOTH"
