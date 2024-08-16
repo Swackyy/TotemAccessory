@@ -4,7 +4,7 @@ license="All rights reserved"
 [[mods]]
 modId="totemaccessory"
 version="${file.jarVersion}"
-displayName="Ohmega"
+displayName="Totem Accessory"
 logoFile= "totemaccessory.png"
 authors="Developer: Swacky_"
 description='''Allows Totems of Undying to be equipped as an accessory (Ohmega API)'''
@@ -23,6 +23,6 @@ side="BOTH"
 [[dependencies.totemaccessory]]
 modId="ohmega"
 mandatory=true
-#versionRange="[)"
+versionRange="[1.2.1,)"
 ordering="BEFORE"
 side="BOTH"

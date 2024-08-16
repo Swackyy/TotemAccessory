@@ -1,5 +1,6 @@
-package com.example.totemaccessory;
+package com.swacky.totemaccessory.common.core;
 
+import com.swacky.ohmega.api.AccessoryType;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -9,22 +10,16 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 public class TAConfig {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
-    private static final ForgeConfigSpec.EnumValue<TotemAccType> TOTEM_ACC_TYPE = BUILDER
+    private static final ForgeConfigSpec.EnumValue<AccessoryType> TOTEM_ACC_TYPE = BUILDER
             .comment("The accessory type of totems, defining which slot(s) they can be placed in")
-            .comment("Allowed values: \"UTILITY\", \"SPECIAL\" (default)")
-            .defineEnum("totemAccType", TotemAccType.SPECIAL);
+            .defineEnum("totemAccType", AccessoryType.SPECIAL);
 
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
-    public static TotemAccType totemAccType;
+    public static AccessoryType totemAccType;
 
     @SubscribeEvent
     static void onLoad(ModConfigEvent event) {
         totemAccType = TOTEM_ACC_TYPE.get();
-    }
-
-    public enum TotemAccType {
-        UTILITY,
-        SPECIAL
     }
 }
