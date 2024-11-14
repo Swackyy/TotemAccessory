@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.swacky.totemaccessory.common.core.mixin",
+  "package": "com.swacky.totem_accessory.common.core.mixin",
   "compatibilityLevel": "JAVA_18",
   "mixins": [
     "LivingEntityMixin"

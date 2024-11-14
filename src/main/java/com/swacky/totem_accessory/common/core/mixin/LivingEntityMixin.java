@@ -1,4 +1,4 @@
-package com.swacky.totemaccessory.common.core.mixin;
+package com.swacky.totem_accessory.common.core.mixin;
 
 import com.swacky.ohmega.api.AccessoryHelper;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -25,19 +25,18 @@ public abstract class LivingEntityMixin {
 
     @Redirect(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;checkTotemDeathProtection(Lnet/minecraft/world/damagesource/DamageSource;)Z"))
     private boolean hurt(LivingEntity instance, DamageSource source) {
-        if(checkTotemDeathProtection(source)) {
+        if (checkTotemDeathProtection(source)) {
             return true;
         }
-        return totemAccessory$customCheckTotemDeathProtection(source);
+        return totemAccessory$customCheckTotemDeathProtection(instance, source);
     }
 
     @Unique
-    private boolean totemAccessory$customCheckTotemDeathProtection(DamageSource source) {
+    private boolean totemAccessory$customCheckTotemDeathProtection(LivingEntity instance, DamageSource source) {
         if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             return false;
         }
         ItemStack stack = null;
-        LivingEntity instance = (LivingEntity) (Object) this;
 
         if (instance instanceof Player player) {
             int slot = AccessoryHelper.getSlotFor(player, Items.TOTEM_OF_UNDYING);
@@ -45,13 +44,14 @@ public abstract class LivingEntityMixin {
                 ItemStack stack0 = AccessoryHelper.getStackInSlot(player, slot);
                 stack = stack0.copy();
                 stack0.shrink(1);
+                AccessoryHelper.setSlotChanged(player, slot);
             }
         }
 
         if (stack != null) {
-            if (instance instanceof ServerPlayer serverplayer) {
-                serverplayer.awardStat(Stats.ITEM_USED.get(Items.TOTEM_OF_UNDYING));
-                CriteriaTriggers.USED_TOTEM.trigger(serverplayer, stack);
+            if (instance instanceof ServerPlayer svr) {
+                svr.awardStat(Stats.ITEM_USED.get(Items.TOTEM_OF_UNDYING));
+                CriteriaTriggers.USED_TOTEM.trigger(svr, stack);
                 instance.gameEvent(GameEvent.ITEM_INTERACT_FINISH);
             }
 

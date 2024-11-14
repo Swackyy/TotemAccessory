@@ -1,7 +1,7 @@
 {
   "pack": {
     "description": {
-      "translate": "dataPack.totem_accessory.description"
+      "translate": "dataPack.totem_acc_type.description"
     },
     "pack_format": 48
   }

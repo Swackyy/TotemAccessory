@@ -1,0 +1,6 @@
+{
+  "totem": {
+    "emptySlotTexture": "item/accessory_slot_totem",
+    "priority": 0
+  }
+}
